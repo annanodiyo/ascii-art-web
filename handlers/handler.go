@@ -24,6 +24,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func AsciiHandler(w http.ResponseWriter, r *http.Request) {
+	// allow only post methods
 	if r.Method != http.MethodPost {
 		http.Error(w, "400 bad request", http.StatusBadRequest)
 		return

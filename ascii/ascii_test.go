@@ -5,7 +5,7 @@ import (
 )
 
 func TestGenerate(t *testing.T) {
-	result, err := Generate("hello", "standard")
+	result, err := Generate("hello steve", "")
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}
