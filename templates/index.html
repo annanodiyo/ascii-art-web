@@ -1,49 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ASCII Art</title>
+    <meta charset="UTF-8">
+    <title>ASCII Art Generator</title>
+
     <style>
         body {
             font-family: Arial;
-            text-align: center;
-            margin-top: 50px;
+            background: #030118;
+            padding: 20px;
         }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgb(102, 165, 248);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
         textarea {
-            width: 300px;
+            width: 100%;
             height: 100px;
         }
+
         button {
+            padding: 10px;
             margin-top: 10px;
-            padding: 10px 20px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        pre {
+            background: rgb(102, 165, 248);
+            color: #030118;
+            padding: 15px;
+            overflow-x: auto;
         }
     </style>
 </head>
+
 <body>
 
-<h1>ASCII Art Generator</h1>
+<div class="container">
 
-<form action="/ascii-art" method="POST">
-    <textarea name="text" placeholder="Enter text"></textarea><br><br>
+    <h1>ASCII Art Generator</h1>
 
-    <label>
-        <input type="radio" name="banner" value="standard" checked>
-        Standard
-    </label>
+    <form action="/ascii" method="POST">
 
-    <label>
-        <input type="radio" name="banner" value="shadow">
-        Shadow
-    </label>
+        <label>Enter Text:</label><br>
+        <textarea name="text"></textarea><br>
 
-    <label>
-        <input type="radio" name="banner" value="thinkertoy">
-        Thinkertoy
-    </label>
+        <label>Select Banner:</label><br>
 
-    <br><br>
+        <input type="radio" name="banner" value="standard"> Standard<br>
+        <input type="radio" name="banner" value="shadow"> Shadow<br>
+        <input type="radio" name="banner" value="thinkertoy"> Thinkertoy<br>
 
-    <button type="submit">Generate</button>
-</form>
+        <!-- ✅ IMPORTANT -->
+        <input type="radio" name="banner" value="all">
+        <strong>Test All Banners</strong><br>
+
+        <button type="submit">Generate ASCII</button>
+    </form>
+
+    <!-- ERROR -->
+    {{if .Error}}
+        <p class="error">Error: {{.Error}}</p>
+    {{end}}
+
+    <!-- RESULT -->
+    {{if .Result}}
+        <h2>Result:</h2>
+        <pre>{{.Result}}</pre>
+    {{end}}
+
+</div>
 
 </body>
 </html>
