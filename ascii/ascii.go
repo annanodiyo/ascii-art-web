@@ -15,7 +15,7 @@ func Generate(text, banner string) (string, error) {
 		banner = "standard"
 	}
 
-	// ✅ FIX: Correct path (REMOVED "../")
+	// FIX: Correct path (REMOVED "../")
 	filepath := "banners/" + banner + ".txt"
 
 	data, err := os.ReadFile(filepath)

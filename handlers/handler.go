@@ -55,7 +55,7 @@ func AsciiHandler(w http.ResponseWriter, r *http.Request) {
 	var result string
 	var err error
 
-	// ✅ NEW FEATURE: handle "all"
+	// NEW FEATURE: handle "all"
 	if banner == "all" {
 		result, err = ascii.AllSamples(text)
 	} else {
